@@ -310,8 +310,47 @@ with display_col2:
         use_container_width=True
     )
 
-display_data = data.astype(str).replace('nan', 'Not Reported').replace('None', 'Not Reported').replace('<NA>', 'Not Reported')
+display_data = data.copy()
+if 'roe' in display_data.columns:
+    display_data = display_data.rename(columns={'roe': 'ROE'})
+if 'net_profit_margin' in display_data.columns:
+    display_data = display_data.rename(columns={'net_profit_margin': 'Net Profit Margin'})
+if 'gross_profit_margin' in display_data.columns:
+    display_data = display_data.rename(columns={'gross_profit_margin': 'Gross Profit Margin'})
+if 'basic_eps' in display_data.columns:
+    display_data = display_data.rename(columns={'basic_eps': 'Basic EPS'})
+if 'diluted_eps' in display_data.columns:
+    display_data = display_data.rename(columns={'diluted_eps': 'Diluted EPS'})
+if 'company_name' in display_data.columns:
+    display_data = display_data.rename(columns={'company_name': 'Company Name'})
+if 'country' in display_data.columns:
+    display_data = display_data.rename(columns={'country': 'Country'})
+if 'industry' in display_data.columns:
+    display_data = display_data.rename(columns={'industry': 'Industry'})
+if 'ticker' in display_data.columns:
+    display_data = display_data.rename(columns={'ticker': 'Ticker'})
+if 'year' in display_data.columns:
+    display_data = display_data.rename(columns={'year': 'Year'})
+if 'revenue' in display_data.columns:
+    display_data = display_data.rename(columns={'revenue': 'Revenue'})
+if 'revenue_unit' in display_data.columns:
+    display_data = display_data.rename(columns={'revenue_unit': 'Revenue Unit'})
+decimal_percentage_cols = ['ROA', 'ROE']
+already_percentage_cols = ['Net Profit Margin', 'Gross Profit Margin']
+decimal_cols = ['Basic EPS', 'Diluted EPS']
 
+for col in decimal_percentage_cols:
+    if col in display_data.columns:
+        display_data[col] = display_data[col].apply(
+            lambda x: f"{x*100:.1f}%" if pd.notna(x) and isinstance(x, (int, float)) else x
+        )
+
+for col in already_percentage_cols:
+    if col in display_data.columns:
+        display_data[col] = display_data[col].apply(
+            lambda x: f"{x:.1f}%" if pd.notna(x) and isinstance(x, (int, float)) else x
+        )
+display_data = display_data.astype(str).replace('nan', 'Not Reported')
 st.dataframe(
     display_data.reset_index(drop=True),
     width="stretch",
