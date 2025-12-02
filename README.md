@@ -94,7 +94,7 @@ Interactive dashboard for visual exploration via (https://statista-financial-dat
   - `processed/`
     - `financial_data.csv`
     - `financial_data.json`
-    - `financial_data_cleaned.csv`
+    - `financial_data_cleaned.csv` # Final CSV thats displayed in the app.
     - `financial_data_cleaned.json`
     - `reports/`
 
