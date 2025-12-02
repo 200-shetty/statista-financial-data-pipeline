@@ -312,15 +312,15 @@ with display_col2:
 
 display_data = data.copy()
 if 'roe' in display_data.columns:
-    display_data = display_data.rename(columns={'roe': 'ROE'})
+    display_data = display_data.rename(columns={'roe': 'Return on Equity'})
+if 'ROA' in display_data.columns:
+    display_data = display_data.rename(columns={'ROA': 'Return on Assets'})
 if 'net_profit_margin' in display_data.columns:
     display_data = display_data.rename(columns={'net_profit_margin': 'Net Profit Margin'})
 if 'gross_profit_margin' in display_data.columns:
     display_data = display_data.rename(columns={'gross_profit_margin': 'Gross Profit Margin'})
 if 'basic_eps' in display_data.columns:
-    display_data = display_data.rename(columns={'basic_eps': 'Basic EPS'})
-if 'diluted_eps' in display_data.columns:
-    display_data = display_data.rename(columns={'diluted_eps': 'Diluted EPS'})
+    display_data = display_data.rename(columns={'basic_eps': 'Earnings Per Share'})
 if 'company_name' in display_data.columns:
     display_data = display_data.rename(columns={'company_name': 'Company Name'})
 if 'country' in display_data.columns:
@@ -335,9 +335,12 @@ if 'revenue' in display_data.columns:
     display_data = display_data.rename(columns={'revenue': 'Revenue'})
 if 'revenue_unit' in display_data.columns:
     display_data = display_data.rename(columns={'revenue_unit': 'Revenue Unit'})
-decimal_percentage_cols = ['ROA', 'ROE']
+if "diluted_eps" in display_data.columns:
+    display_data = display_data.drop(columns=["diluted_eps"])
+
+decimal_percentage_cols = ['Return on Assets', 'Return on Equity']
 already_percentage_cols = ['Net Profit Margin', 'Gross Profit Margin']
-decimal_cols = ['Basic EPS', 'Diluted EPS']
+decimal_cols = ['Earnings Per Share']
 
 for col in decimal_percentage_cols:
     if col in display_data.columns:
@@ -354,7 +357,7 @@ display_data = display_data.astype(str).replace('nan', 'Not Reported')
 st.dataframe(
     display_data.reset_index(drop=True),
     width="stretch",
-    height=500
+    height="stretch"
 )
 
 st.markdown("---")
