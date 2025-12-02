@@ -66,18 +66,18 @@ The dataset includes the following fields:
 - cd statista-financial-data-pipeline
 
 2. Create a virtual environment and activate it:
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
+- pip install virtualenv
+- virtualenv venv
+- source venv/bin/activate
 
 3. Install dependencies:
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 4. Run the pipeline:
-python src/main.py
+- python src/main.py
 
 5. Run the Streamlit app:
-streamlit run src/app.py
+- streamlit run src/app.py
 
 ## Outputs:
 
