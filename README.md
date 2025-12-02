@@ -31,21 +31,21 @@ The dataset includes the following fields:
 
 
 ## Project Structure
-├── data
-│ ├── raw 
-│ └── processed 
-|     └── reports
-├── src
-│ ├── extract.py 
-│ ├── transform.py 
-│ ├── clean.py 
-│ ├── charts.py 
-│ ├── main.py 
-│ ├── app.py 
-│ └── config.py 
-├── dirty_exploration 
-├── requirements.txt 
-└── README.md
+- `data/`
+  - `raw/`
+  - `processed/`
+    - `reports/`
+- `src/`
+  - `extract.py`
+  - `transform.py`
+  - `clean.py`
+  - `charts.py`
+  - `main.py`
+  - `app.py`
+  - `config.py`
+- `dirty_exploration/`
+- `requirements.txt`
+- `README.md`
 
 ## Features
 
@@ -62,8 +62,8 @@ The dataset includes the following fields:
 - **ETL Orchestration:** `main.py` runs the full pipeline automatically.
 
 1. Clone the repository:
-git clone https://github.com/gnanashri/statista-financial-data-pipeline.git
-cd statista-financial-data-pipeline
+- git clone https://github.com/gnanashri/statista-financial-data-pipeline.git
+- cd statista-financial-data-pipeline
 
 2. Create a virtual environment and activate it:
 pip install virtualenv
@@ -85,18 +85,18 @@ Cleaned and processed data (CSV and JSON) in data/processed/
 
 KPI charts in data/processed/reports/
 
-Interactive dashboard for visual exploration via <link>
+Interactive dashboard for visual exploration via (https://statista-financial-data-pipeline.streamlit.app/)
 
-data/
-├── raw/
-│   ├── company_tickers.json      
-│   └── selected_companies.json    
-│   ├── financial_data.csv         
-│   ├── financial_data.json
-│   ├── financial_data_cleaned.csv
-│   ├── financial_data_cleaned.json
-│   └── reports/    # KPI charts
-
+- `data/`
+  - `raw/`
+    - `company_tickers.json`
+    - `selected_companies.json`
+  - `processed/`
+    - `financial_data.csv`
+    - `financial_data.json`
+    - `financial_data_cleaned.csv`
+    - `financial_data_cleaned.json`
+    - `reports/`
 
 ## Screenshots
 
@@ -113,4 +113,9 @@ data/
 
 ### Return on Assets (ROA)
 ![ROA](data/processed/reports/kpi_roa.png)
+
+### App
+![App](data/processed/reports/app_screenshot.png)
+
+
 
