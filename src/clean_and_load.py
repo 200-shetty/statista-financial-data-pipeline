@@ -67,7 +67,7 @@ def clean_data(df):
     
     print(f"Total number of companies: {df['ticker'].nunique()}")
     return df
-
+#load data
 def save_cleaned_data(df):
     csv_path = PROCESSED_DIR / "financial_data_cleaned.csv"
     json_path = PROCESSED_DIR / "financial_data_cleaned.json"
