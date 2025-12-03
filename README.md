@@ -38,7 +38,7 @@ The dataset includes the following fields:
 - `src/`
   - `extract.py`
   - `transform.py`
-  - `clean.py`
+  - `clean_and_load.py`
   - `charts.py`
   - `main.py`
   - `app.py`
