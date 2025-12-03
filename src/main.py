@@ -10,7 +10,7 @@ import seaborn as sns
 
 from extract import fetch_sec_tickers, pick_tickers
 from transform import transform_all, save_processed
-from clean import clean_data, save_cleaned_data
+from clean_and_load import clean_data, save_cleaned_data
 from config import RAW_DIR, PROCESSED_DIR
 from charts import generate_kpi_charts
 
